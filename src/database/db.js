@@ -7,11 +7,5 @@ const db = new Sequelize('bkfzmgxiczperfw31011', 'ulnv5qdkf9hay84h', 'DhJS1vCVVA
   }
 );
 
-db.authenticate().then(() => {
-   console.log('Connection has been established successfully.');
-}).catch((error) => {
-   console.error('Unable to connect to the database: ', error);
-});
-
 module.exports = db;
 
