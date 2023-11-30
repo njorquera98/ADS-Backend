@@ -3,8 +3,8 @@ const db = require('../database/db.js');
 
 const AsignaturaModel = db.define('Asignatura', {
   id_asignatura: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true
   },
 
