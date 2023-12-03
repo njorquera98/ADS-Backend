@@ -1,18 +1,22 @@
-const { DataTypes } = require("sequelize");
-const db = require('../database/db');
+// periodos.model.js
+const { DataTypes } = require('sequelize');
+const db = require('../database/db.js');
 
-const PeriodoModel = db.define('Periodo', {
+const Periodo = db.define('Periodos', {
   id_periodo: {
     type: DataTypes.INTEGER,
+    primaryKey: true,
     autoIncrement: true,
-    primaryKey: true
-
   },
-
-  tipo: DataTypes.INTEGER,
-  fecha_inicio: DataTypes.DATE,
-  fecha_fin: DataTypes.DATE
+  tipo: {
+    type: DataTypes.INTEGER,
+  },
+  fecha_inicio: {
+    type: DataTypes.DATE,
+  },
+  fecha_fin: {
+    type: DataTypes.DATE,
+  },
 });
 
-module.export = { PeriodoModel }
-
+module.exports = Periodo;

@@ -1,20 +1,32 @@
-const { DataTypes } = require("sequelize");
+// usuario.model.js
+const { DataTypes } = require('sequelize');
 const db = require('../database/db.js');
 
-const UsuarioModel = db.define('Usuario',{
+const Usuario = db.define('Usuarios', {
   id_usuario: {
     type: DataTypes.INTEGER,
+    primaryKey: true,
     autoIncrement: true,
-    primaryKey: true
   },
-
-  nombre: DataTypes.STRING,
-  run: DataTypes.STRING,
-  apellido_materno: DataTypes.STRING,
-  apellido_paterno: DataTypes.STRING,
-  telefono: DataTypes.INTEGER,
-  rol: DataTypes.STRING
-
+  nombre: {
+    type: DataTypes.STRING(255),
+  },
+  run: {
+    type: DataTypes.STRING(20),
+    unique: true,
+  },
+  apellido_paterno: {
+    type: DataTypes.STRING(255),
+  },
+  apellido_materno: {
+    type: DataTypes.STRING(255),
+  },
+  telefono: {
+    type: DataTypes.STRING(50),
+  },
+  rol: {
+    type: DataTypes.INTEGER,
+  },
 });
 
-module.export = {UsuarioModel}
+module.exports = Usuario;
