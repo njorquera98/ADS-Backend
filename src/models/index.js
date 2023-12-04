@@ -1,10 +1,9 @@
-// En tu archivo index.js (o como prefieras llamarlo)
 const UsuarioModel = require('./usuario');
 const AsignaturaModel = require('./asignatura');
 const PeriodoModel = require('./periodo');
-const SolicitudesModel = require('./solicitudes');
-const AyudantiasModel = require('./ayudantias');
-const EstudianteModel = require('./estudiante'); // Agrega este modelo
+const SolicitudesModel = require('./solicitud');
+const AyudantiasModel = require('./ayudantia');
+const EstudianteModel = require('./estudiante');
 
 module.exports = {
   UsuarioModel,

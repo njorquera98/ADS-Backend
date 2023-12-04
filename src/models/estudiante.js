@@ -1,8 +1,12 @@
-// estudiante.model.js
 const { DataTypes } = require('sequelize');
 const db = require('../database/db.js');
 
 const Estudiante = db.define('Estudiantes', {
+  id_estudiante: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   id_usuario: {
     type: DataTypes.INTEGER,
     references: {

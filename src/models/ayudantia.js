@@ -1,18 +1,17 @@
-// solicitudes.model.js
 const { DataTypes } = require('sequelize');
 const db = require('../database/db.js');
 
-const Solicitud = db.define('Solicitudes', {
-  id_solicitud: {
+const Ayudantia = db.define('Ayudantias', {
+  id_ayudantia: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  id_ayudantia: {
+  id_asignatura: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Ayudantias',
-      key: 'id_ayudantia',
+      model: 'Asignaturas',
+      key: 'id_asignatura',
     },
   },
   id_usuario: {
@@ -22,8 +21,11 @@ const Solicitud = db.define('Solicitudes', {
       key: 'id_usuario',
     },
   },
-  fecha: {
-    type: DataTypes.DATE,
+  cupos: {
+    type: DataTypes.INTEGER,
+  },
+  horas: {
+    type: DataTypes.INTEGER,
   },
   estado: {
     type: DataTypes.STRING(50),
@@ -35,15 +37,6 @@ const Solicitud = db.define('Solicitudes', {
       key: 'id_periodo',
     },
   },
-  prioridad: {
-    type: DataTypes.INTEGER,
-  },
-  promedio_asignatura: {
-    type: DataTypes.FLOAT,
-  },
-  anteriormente_ayudante: {
-    type: DataTypes.BOOLEAN,
-  },
 });
 
-module.exports = Solicitud;
+module.exports = Ayudantia;

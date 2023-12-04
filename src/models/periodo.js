@@ -1,4 +1,3 @@
-// periodos.model.js
 const { DataTypes } = require('sequelize');
 const db = require('../database/db.js');
 

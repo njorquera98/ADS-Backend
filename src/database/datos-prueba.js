@@ -93,25 +93,13 @@ const solicitud2 = {
 
 // Periodos
 const periodo1 = {
-  tipo: 1, // Ajusta según tus tipos de periodos
-  fecha_inicio: new Date(),
-  fecha_fin: new Date(),
+  tipo: 1,
+  fecha_inicio: new Date('2023-01-01'),
+  fecha_fin: new Date('2023-06-30'),
 };
 
 const periodo2 = {
-  tipo: 2, // Ajusta según tus tipos de periodos
-  fecha_inicio: new Date(),
-  fecha_fin: new Date(),
+  tipo: 2,
+  fecha_inicio: new Date('2023-07-01'),
+  fecha_fin: new Date('2023-12-31'),
 };
-
-// Guarda los datos en la base de datos
-(async () => {
-  await UsuarioModel.bulkCreate([usuario1, usuario2]);
-  await AsignaturaModel.bulkCreate([asignatura1, asignatura2]);
-  await EstudianteModel.bulkCreate([estudiante1, estudiante2]);
-  await AyudantiasModel.bulkCreate([ayudantia1, ayudantia2]);
-  await SolicitudesModel.bulkCreate([solicitud1, solicitud2]);
-  await PeriodoModel.bulkCreate([periodo1, periodo2]);
-
-  console.log('Datos de prueba creados exitosamente.');
-})();
