@@ -9,6 +9,7 @@ const createSolicitud = async (req, res) => {
     const ayudantiaId = req.body.id_ayudantia;
     const ayudantiaExist = await AyudantiaModel.findByPk(ayudantiaId);
     if (!ayudantiaExist) {
+      console.log('La ayudantía no existe');
       return res.status(400).json({ error: 'La ayudantía no existe' });
     }
 
@@ -16,6 +17,7 @@ const createSolicitud = async (req, res) => {
     const usuarioId = req.body.id_usuario;
     const usuarioExist = await UsuarioModel.findByPk(usuarioId);
     if (!usuarioExist) {
+      console.log('El usuario no existe');
       return res.status(400).json({ error: 'El usuario no existe' });
     }
 
@@ -23,6 +25,7 @@ const createSolicitud = async (req, res) => {
     const periodoId = req.body.id_periodo;
     const periodoExist = await PeriodoModel.findByPk(periodoId);
     if (!periodoExist) {
+      console.log('El periodo no existe');
       return res.status(400).json({ error: 'El periodo no existe' });
     }
 
@@ -31,6 +34,7 @@ const createSolicitud = async (req, res) => {
     res.json(solicitudSinSequelizeProps);
   } catch (error) {
     console.error(error);
+    console.log('este error');
     res.status(500).json({ error: 'Error al crear solicitud' });
   }
 };
@@ -124,7 +128,8 @@ const deleteSolicitud = async (req, res) => {
     });
 
     if (rowsDeleted > 0) {
-      res.json({ message: 'Solicitud eliminada correctamente' });
+      // res.json({ message: 'Solicitud eliminada correctamente' });
+      res.status(204).send();
     } else {
       res.status(404).json({ error: 'Solicitud no encontrada' });
     }
