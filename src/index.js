@@ -1,18 +1,26 @@
-const express = require('express')
-const db = require('./database/db.js')
-const models = require('./models')
-const app = express()
-const port = 3000
+const app = require('./app'); // eslint-disable-line no-unused-vars
+const logger = require('./config/logger');
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const exitHandler = (sv) => {
+  const logger = require('./config/logger');
+  if (sv) {
+    sv.close(() => {
+      logger.info('Server closed');
+      process.exit(1);
+    });
+  } else {
+    process.exit(1);
+  }
+};
 
-db.authenticate().then(async () => {
-  console.log('Connection has been established successfully.');
-  await db.sync();
-  console.log("All models were synchronized successfully.");
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-  });
+const unexpectedErrorHandler = (error) => {
+  logger.error(error);
+};
 
+process.on('uncaughtException', unexpectedErrorHandler);
+process.on('unhandledRejection', unexpectedErrorHandler);
+
+process.on('SIGTERM', (sv) => {
+  logger.info('SIGTERM received');
+  exitHandler(sv);
+});

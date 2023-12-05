@@ -1,16 +1,21 @@
-const { DataTypes } =  require("sequelize");
+const { DataTypes } = require('sequelize');
 const db = require('../database/db.js');
 
-const AsignaturaModel = db.define('Asignatura', {
+const AsignaturaModel = db.define('Asignaturas', {
   id_asignatura: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
-
-  codigo: DataTypes.STRING,
-  nombre: DataTypes.STRING,
-  letra: DataTypes.STRING
-
+  codigo: {
+    type: DataTypes.STRING(50)
+  },
+  nombre: {
+    type: DataTypes.STRING(255)
+  },
+  letra: {
+    type: DataTypes.CHAR(1)
+  }
 });
-module.export = { AsignaturaModel }
+
+module.exports = AsignaturaModel;

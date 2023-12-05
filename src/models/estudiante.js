@@ -1,18 +1,31 @@
-const { DataTypes } = require("sequelize")
-const db = require('../database/db.js')
+const { DataTypes } = require('sequelize');
+const db = require('../database/db.js');
 
-const EstudianteModel = db.define('Estudiante', {
+const EstudianteModel = db.define('Estudiantes', {
+  id_estudiante: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   id_usuario: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+    references: {
+      model: 'Usuarios',
+      key: 'id_usuario'
+    }
   },
-
-  nro_cuenta: DataTypes.STRING,
-  tipo_cuenta: DataTypes.STRING,
-  banco: DataTypes.STRING,
-  promedio_notas: DataTypes.FLOAT(2,1)
-  //Referenciar que id_usuario es la primaryKey pero foranea de la tabla usuario
+  nro_cuenta: {
+    type: DataTypes.STRING(50)
+  },
+  tipo_cuenta: {
+    type: DataTypes.STRING(50)
+  },
+  banco: {
+    type: DataTypes.STRING(50)
+  },
+  promedio_notas: {
+    type: DataTypes.FLOAT
+  }
 });
 
-module.exports = { EstudianteModel }
+module.exports = EstudianteModel;
