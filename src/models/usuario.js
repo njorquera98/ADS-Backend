@@ -14,6 +14,9 @@ const UsuarioModel = db.define('Usuarios', {
     type: DataTypes.STRING(20),
     unique: true
   },
+  email: {
+    type: DataTypes.STRING(255)
+  },
   apellido_paterno: {
     type: DataTypes.STRING(255)
   },
@@ -25,6 +28,9 @@ const UsuarioModel = db.define('Usuarios', {
   },
   rol: {
     type: DataTypes.INTEGER
+  },
+  image_url: {
+    type: DataTypes.STRING(255)
   }
 });
 
